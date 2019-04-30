@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Result Prediction</title>
+    <link rel="stylesheet" type="type/css" href="{{url_for('static', filename='css/style.css')}}" </head>
+
+    <body style="background-color:#C0C0C0;">
+	
+		
+        <header>
+            <div class="container">
+                <div id="brandname">
+                    <h2 style="background-color:#D3D3D3;">Natural Language Processing (NLP) Based Web Application </h2>
+                </div>
+                <h1 style="color:green;">"Automated Restaurant Review Checker"</h1>
+            </div>
+        </header>
+
+        <p style="color:blue;font-size:20;text-align:center;"></p>
+        <h2 style="background-color:khaki;">Predicted answer is :</h2>
+        <div class="results">
+            {% if prediction == 1%}
+            <h1 style="color:red">You Probably LIKED this place! <img src="https://i.ytimg.com/vi/kb9mPkPVXa4/maxresdefault.jpg" alt="Smiley face" width="42" height="42"></h1>
+            {% elif prediction == 0%}
+            <h1 style="color:blue">You Probably DISLIKED this place! <img src="http://tutorialseek.com/wp-content/uploads/2018/04/dis.jpg" alt="CRY face" width="42" height="42"> </h1>
+            {% endif %}
+        </div>
+
+
+    </body>
+
+</html>

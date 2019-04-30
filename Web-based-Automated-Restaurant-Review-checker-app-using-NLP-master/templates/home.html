@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <style>
+  background-image: url("diu_green.jpg");
+    background-color: #cccccc;
+ </style>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css" </head>
+
+    <body style="background-color:blue;">
+        <header>
+            <div class="container">
+                <div id="brandname">
+				      Automated Restaurant Review Checker
+                    
+                </div>
+                <h2><br><br>Natural Language processing(NLP) based App </h2>
+            </div>
+        </header>
+
+        <div class="ml-container">
+            <form action="{{url_for('predict')}}" method='POST'>
+                <h2 style="background-color:#ff0000;">Enter Your Comment/Review Below : </h2>
+                <textarea name="comment" rows="10" cols="100"></textarea>
+                <br/>
+                <input type='submit' class="btn-info" value="predict">
+            </form>
+        </div>
+
+
+    </body>
+
+</html>

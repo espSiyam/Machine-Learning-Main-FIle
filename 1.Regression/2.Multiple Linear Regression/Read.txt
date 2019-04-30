@@ -1,0 +1,4 @@
+https://medium.com/@contactsunny/label-encoder-vs-one-hot-encoder-in-machine-learning-3fc273365621
+
+Dummy variable trap
+Why we use one dummy variable.Have to study
