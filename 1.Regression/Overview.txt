@@ -1,0 +1,53 @@
+*********SLR:*********
+from sklearn.linear_model import LinearRegression
+**********MLR:*****
+for dummy variable :
+#Encoding the independent variable
+#Convering CV iinto number
+from sklearn.preprocessing import LabelEncoder,OneHotEncoder
+labelencoder_X = LabelEncoder()
+#Convering CV iinto 0 and 1
+X[:,3] = labelencoder_X.fit_transform(X[:,3])
+onehotencoder = OneHotEncoder(categorical_features = [3])
+X = onehotencoder.fit_transform(X).toarray()
+#Avoiding the dummy variablr trap
+X = X[:,1:]
+
+Backtracking doesn't take care of b0 =1 so we have to add it manually at the first:
+X = np.append(arr = np.ones((50,1)).astype(int),values = X ,axis = 1)
+Backtracking:
+X_opt = X[:,[0,1,2,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit() #The lower p value , the better
+regressor_OLS.summary()
+
+
+*******Polynomial Regression*********
+#Creating polynomial feature from x
+from sklearn.preprocessing import PolynomialFeatures
+poly_reg = PolynomialFeatures(degree = 4)
+X_poly = poly_reg.fit_transform(X)
+#First collumn add all 1 CZ we need b0 which = 1
+#Fitting x poly in dataset
+lin_reg_2 = LinearRegression()
+lin_reg_2.fit(X_poly,y)
+--------------
+plt.plot(X,lin_reg_2.predict(poly_reg.fit_transform(X)),color = 'blue') #Have to predict depending polynomial Fea.... and can handle new features automatically 
+
+-----------
+#Predicting a new result with Linear Regression
+lin_reg.predict([[6.5]]) #Cz it requires 2D 
+
+#Predicting a new result with Polynomial Regression
+lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))#poly_reg.fit_transform cz we need predict from a singular value
+
+*******************Support Vector Regression******************
+SVR class doesn't include Feature scaling by default.So we have to do it manually.
+from sklearn.preprocessing import StandardScaler
+sc= StandardScaler()
+X = sc.fit_transform(X) 
+y = sc.fit_transform(y)
+
+------------------
+y_pred = sc_y.inverser_transform(regressor.predict(sc_X.transform(np.array([[6.4]]))))
+#to scale new data then inverse to get non scaled data as output
+

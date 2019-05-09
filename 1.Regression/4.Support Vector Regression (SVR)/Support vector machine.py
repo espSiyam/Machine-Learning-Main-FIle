@@ -16,10 +16,12 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 
 #SVR class doesn't include Feature scaling by default.So we have to do it manually.
 # Feature Scaling
+# Feature Scaling
 from sklearn.preprocessing import StandardScaler
-sc= StandardScaler()
-X = sc.fit_transform(X) 
-y = sc.fit_transform(y)
+sc_X = StandardScaler()
+sc_y = StandardScaler()
+X = sc_X.fit_transform(X)
+y = sc_y.fit_transform(y)
 
 # Fitting the SVR to the dataset
 from sklearn.svm import SVR
@@ -27,7 +29,8 @@ regressor = SVR(kernel = 'rbf')
 regressor.fit(X,y)
 
 # Predicting a new result
-y_pred = regressor.predict([[6.4]])
+y_pred = sc_y.inverser_transform(regressor.predict(sc_X.transform(np.array([[6.4]]))))
+#to scale new data then inverse to get non scaled data as output
 #CZ we have to fit transform value 6.5
 
 # Visualising the SVR results

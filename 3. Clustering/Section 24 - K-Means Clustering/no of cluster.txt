@@ -1,0 +1,7 @@
+to choose no of cluster we can use wcss = (+distance(p,c1))^2+ (+distance(p,c2))^2+ (+distance(p,c3))^2
+p = point 
+c = cluster
+wcss = within-cluster sum of squares 
+wcss >minimum = good result   But it can be 0 which is super bad so we have to use *elbow method
+
+To avoid random initilization trap we can use kmeans ++ in the algorithm
